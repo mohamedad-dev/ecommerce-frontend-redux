@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: 'https://ecommerce-backend-1nzl.vercel.app/api/',
-  // baseURL:" https://ecombackend-rouge.vercel.app/api/"
+  // baseURL: 'http://localhost:3001/api/',
+  baseURL: "https://ecommerce-backend-final-zeta.vercel.app/api/"
 })

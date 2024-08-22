@@ -6,14 +6,14 @@ import {
   setPage,
   setLimit,
   setSearchTerm,
-} from '../../../features/articleSlice'
+} from '../../features/articleSlice'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import AfficheArticles from './AfficheArticles'
-import Pagination from './Pagination'
+import Pagination from '../admin/articles/Pagination'
+import Affichearticlescard from './Affichearticlescard'
 
-const Listarticles = () => {
+const Listarticlescard = () => {
   const { page, limit, searchTerm } = useSelector(
     (state) => state.storearticles
   )
@@ -33,9 +33,10 @@ const Listarticles = () => {
     dispatch(setLimit(parseInt(event.target.value, 10)))
     dispatch(setPage(1)) // Réinitialiser la page lorsque le nombre d'éléments par page change
   }
+
   return (
     <div>
-      <AfficheArticles />
+      <Affichearticlescard />
       <div style={{ display: 'flex', justifyContent: 'right' }}>
         <div className="limit-selector-container">
           <label>
@@ -59,4 +60,4 @@ const Listarticles = () => {
   )
 }
 
-export default Listarticles
+export default Listarticlescard
