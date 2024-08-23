@@ -6,6 +6,7 @@ import Menu from './components/admin/Menu'
 import Listarticlescard from './components/client/Listarticlescard'
 import Cart from './components/client/panier/Cart'
 import NavScrolls from './components/client/NavScrolls'
+import Register from './components/admin/Register'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <NavScrolls />
         <Routes>
           <Route path="/" element={<Listarticlescard />} />
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/articles" element={<Listarticles />} />
           <Route path="/categories" element={<Listcategories />} />
