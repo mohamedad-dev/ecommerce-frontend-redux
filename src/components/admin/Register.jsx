@@ -45,8 +45,6 @@ export default function Register() {
   const dispatch = useDispatch()
 
   const [firstName, setFirstName] = useState('')
-  console.log(firstName)
-
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -113,6 +111,7 @@ export default function Register() {
                   required
                   fullWidth
                   id="lastName"
+                  value={lastName}
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
@@ -124,6 +123,7 @@ export default function Register() {
                   required
                   fullWidth
                   id="email"
+                  value={email}
                   label="Email Address"
                   name="email"
                   autoComplete="email"
@@ -135,6 +135,7 @@ export default function Register() {
                   required
                   fullWidth
                   name="password"
+                  value={password}
                   label="Password"
                   type="password"
                   id="password"
@@ -147,6 +148,7 @@ export default function Register() {
                   required
                   fullWidth
                   name="password2"
+                  value={password2}
                   label="Confirm Password"
                   type="password"
                   id="password2"

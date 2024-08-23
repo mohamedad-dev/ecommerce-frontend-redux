@@ -7,6 +7,7 @@ export const register = createAsyncThunk(
     const { rejectWithValue } = thunkAPI
     try {
       const res = await authService.signUp(user)
+      console.log(res.data)
       return res.data
     } catch (error) {
       return rejectWithValue(error.message)
@@ -23,6 +24,7 @@ export const authSlice = createSlice({
     isError: false,
     errorMessage: '',
     isLoggedIn: false,
+    status: '',
   },
   extraReducers: (builder) => {
     //get articles
