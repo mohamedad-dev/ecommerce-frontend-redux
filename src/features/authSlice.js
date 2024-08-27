@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import authService from '../services/authservice'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
 export const register = createAsyncThunk(
   'auth/register',
   async (user, thunkAPI) => {
@@ -68,6 +72,10 @@ export const authSlice = createSlice({
         state.status = null
         state.isSuccess = true
         state.isLoggedIn = true
+        MySwal.fire({
+          icon: 'success',
+          title: 'Connection was successful',
+        })
         localStorage.setItem('token', action.payload.token)
       })
       .addCase(login.rejected, (state, action) => {
@@ -75,6 +83,10 @@ export const authSlice = createSlice({
         state.isError = true
         state.status = action.payload
         state.user = null
+        MySwal.fire({
+          icon: 'error',
+          title: 'Connection was refused',
+        })
       })
       // logout
       .addCase(logout.fulfilled, (state, action) => {

@@ -10,24 +10,30 @@ import Register from './components/admin/Register'
 import Login from './components/admin/Login'
 import Logout from './components/admin/Logout'
 import { useSelector } from 'react-redux'
+import ProtectedRoute from './components/admin/ProtectedRoute'
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth)
+  console.log(isLoggedIn)
+
   return (
     <>
       <Router>
-        {isLoggedIn ? <Menu /> : <Login />}
+        {/* {isLoggedIn ? <Menu /> : <Login />} */}
 
         {/* <NavScrolls /> */}
         <Routes>
-          <Route path="/" element={<Listarticlescard />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Listarticlescard />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/articles" element={<Listarticles />} />
+            <Route path="/categories" element={<Listcategories />} />
+            <Route path="/scategories" element={<Listscategories />} />
+          </Route>
+
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/articles" element={<Listarticles />} />
-          <Route path="/categories" element={<Listcategories />} />
-          <Route path="/scategories" element={<Listscategories />} />
         </Routes>
       </Router>
     </>

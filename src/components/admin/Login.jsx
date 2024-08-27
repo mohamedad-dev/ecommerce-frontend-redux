@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import MuiLink from '@mui/material/Link'
-import { Link } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../features/authSlice'
 
 function Copyright(props) {
@@ -41,6 +41,9 @@ const defaultTheme = createTheme()
 
 export default function Login() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { isLoggedIn } = useSelector((state) => state.auth)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -49,6 +52,12 @@ export default function Login() {
     event.preventDefault()
     const userData = { email, password }
     dispatch(login(userData))
+    console.log('from login', isLoggedIn)
+  }
+
+  if (isLoggedIn) {
+    navigate('/')
+    // console.log('testttttt')
   }
 
   return (
