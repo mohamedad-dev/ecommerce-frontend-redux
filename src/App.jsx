@@ -7,16 +7,23 @@ import Listarticlescard from './components/client/Listarticlescard'
 import Cart from './components/client/panier/Cart'
 import NavScrolls from './components/client/NavScrolls'
 import Register from './components/admin/Register'
+import Login from './components/admin/Login'
+import Logout from './components/admin/Logout'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const { isLoggedIn } = useSelector((state) => state.auth)
   return (
     <>
       <Router>
-        {/* <Menu /> */}
-        <NavScrolls />
+        {isLoggedIn ? <Menu /> : <Login />}
+
+        {/* <NavScrolls /> */}
         <Routes>
           <Route path="/" element={<Listarticlescard />} />
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/articles" element={<Listarticles />} />
           <Route path="/categories" element={<Listcategories />} />
